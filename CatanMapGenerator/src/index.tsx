@@ -8,6 +8,7 @@ import { HillHex } from './Hexagons/HillHex';
 import { MountainHex } from './Hexagons/MountainHex';
 import { PastureHex } from './Hexagons/Pasture';
 import { OptionsPanel } from './Containers/OptionsPanel';
+import { Map } from './Containers/Map';
 
 
 export function App() {
@@ -20,7 +21,10 @@ export function App() {
 			<HillHex/>
 			<MountainHex/>
 			<PastureHex/>*/}
-			<OptionsPanel/>
+			
+			{/*<OptionsPanel/>*/}
+
+			<Map/>
 		</div>
 	);
 }

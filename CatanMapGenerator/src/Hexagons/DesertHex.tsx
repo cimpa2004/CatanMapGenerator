@@ -8,3 +8,4 @@ export function DesertHex({ altText }: Readonly<HexProps>) {
         </div>
     );
 }
+
