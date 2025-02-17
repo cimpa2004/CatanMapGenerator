@@ -4,7 +4,7 @@ import "./Map.less";
 type MapProps = {};
 
 export function Map({}: Readonly<MapProps>) {
-    const hexagonPattern = [3, 4, 5, 4, 3]; // Number of hexagons in each row
+    const hexagonPattern = [3, 4, 5, 4, 3]; 
 
     const hexagons = hexagonPattern.map((count, row) => {
         const hexagonsInRow = Array.from({ length: count }, (_, col) => (
@@ -17,5 +17,5 @@ export function Map({}: Readonly<MapProps>) {
         );
     });
 
-    return <div className="hex-grid">{hexagons}</div>;
+    return <div class="Container"><div className="hex-grid">{hexagons}</div></div>;
 }
