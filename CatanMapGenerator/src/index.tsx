@@ -7,18 +7,20 @@ import { ForestHex } from './Hexagons/ForestHex';
 import { HillHex } from './Hexagons/HillHex';
 import { MountainHex } from './Hexagons/MountainHex';
 import { PastureHex } from './Hexagons/Pasture';
+import { OptionsPanel } from './Containers/OptionsPanel';
 
 
 export function App() {
 	return (
 		<div>
-			<RoundedColoredButtonWithText text="Hello" color="red" onClick={() => {}} callback={() => {}} />
+			{/*<RoundedColoredButtonWithText text="Hello" color="red" onClick={() => {}} callback={() => {}} />
 			<DesertHex/>
 			<FieldHex/>
 			<ForestHex/>
 			<HillHex/>
 			<MountainHex/>
-			<PastureHex/>
+			<PastureHex/>*/}
+			<OptionsPanel/>
 		</div>
 	);
 }

@@ -7,6 +7,7 @@ type RoundedColoredButtonWithTextProps = {
 };
 
 /**
+ * @class RoundedColoredButtonWithText
  * @param text text that goes on the button
  * @param color color of the button
  * @param onClick function that is called when the button is clicked default is empty function
@@ -19,5 +20,5 @@ export function RoundedColoredButtonWithText({text,color,onClick,callback}: Read
         callback();
     }
     
-    return <button class="RoundedColoredButtonWithText" style={{backgroundColor: color}} onClick={handleClick}>{text}</button>
+    return <div><button class="RoundedColoredButtonWithText" style={{backgroundColor: color}} onClick={handleClick}>{text}</button></div>
 }
