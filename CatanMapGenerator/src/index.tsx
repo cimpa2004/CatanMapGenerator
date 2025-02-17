@@ -1,10 +1,24 @@
 import { render } from 'preact';
+import { RoundedColoredButtonWithText } from './Buttons/RoundedColoredButtonWithText';
+import './index.less';
+import { DesertHex } from './Hexagons/DesertHex';
+import { FieldHex } from './Hexagons/FieldHex';
+import { ForestHex } from './Hexagons/ForestHex';
+import { HillHex } from './Hexagons/HillHex';
+import { MountainHex } from './Hexagons/MountainHex';
+import { PastureHex } from './Hexagons/Pasture';
 
 
 export function App() {
 	return (
 		<div>
-			AAA
+			<RoundedColoredButtonWithText text="Hello" color="red" onClick={() => {}} callback={() => {}} />
+			<DesertHex/>
+			<FieldHex/>
+			<ForestHex/>
+			<HillHex/>
+			<MountainHex/>
+			<PastureHex/>
 		</div>
 	);
 }
