@@ -1,7 +1,7 @@
-import hillImage from "../assets/tiles/hill.svg";
+import hillImage from "../../assets/tiles/hill.svg";
 import { HexProps } from "./HexProps";
 
-export function HillHex({ altText }: Readonly<HexProps>) {
+export function HillHex({value, altText }: Readonly<HexProps>) {
     return (
         <div className="Hexagon">
             <img src={hillImage} alt={altText} />

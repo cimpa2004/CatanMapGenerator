@@ -20,8 +20,9 @@ export function Map({}: Readonly<MapProps>) {
 
     const hexagons = hexagonPattern.map((count, row) => {
         const hexagonsInRow = Array.from({ length: count }, (_, col) => {
+            //getRandomHexTypeShould be overwritten to get the correct hexagon type
             const HexComponent = getRandomHexType();
-            return <HexComponent key={`${row}-${col}`} altText={`Hexagon ${row}-${col}`} />;
+            return <HexComponent key={`${row}-${col}`} value={-1} altText={`Hexagon ${row}-${col}`} />;
         });
         return (
             <div key={row} className="hex-row">
