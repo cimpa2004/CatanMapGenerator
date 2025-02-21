@@ -26,7 +26,7 @@ const hexComponentMap: { [key: string]: React.ComponentType<{ value: number; alt
 };
 
 export function CatanMap({ goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate }: Readonly<MapProps>) {
-    const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch);
+    const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch,randomGenerate);
 
     const hexagonPattern = [3, 4, 5, 4, 3]; 
 

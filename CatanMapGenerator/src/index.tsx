@@ -17,7 +17,7 @@ export function App() {
 			{/*<OptionsPanel/>*/}
 
 			<CatanMap badNumbersCanTouch={true} goodNumbersCanTouch={false} 
-			sameNumbersCanTouch={true} sameResourcesCanTouch={true} randomGenerate={false}/>
+			sameNumbersCanTouch={true} sameResourcesCanTouch={false} randomGenerate={false}/>
 		</div>
 	);
 }

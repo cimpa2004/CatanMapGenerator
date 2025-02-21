@@ -1,25 +1,42 @@
+import { getNeighboursFromIndex } from "./getNeighboursFromIndex";
 import { MapTile } from "./Tiles/MapTile";
 
 export function generateMap(goodNumbersCanTouch:boolean,badNumbersCanTouch:boolean,
-                    sameNumbersCanTouch:boolean,sameResourcesCanTouch:boolean):MapTile[]{
+                    sameNumbersCanTouch:boolean,sameResourcesCanTouch:boolean,randomGenerate:boolean):MapTile[]{
     const hexagonPattern = [3, 4, 5, 4, 3];
     let remainingFieldNumber = fillMaxFieldNumber();
     const hexTypes = ["Desert", "Forest", "Mountain", "Field", "Hill", "Pasture"];
     let mapTiles:MapTile[] = [];
-
-    if(sameResourcesCanTouch===false){
-        //TODO normal resource generation
+    //setting tile indexes and neighbourIndexes
+    for(let i = 0; i<19; i++){
+        mapTiles.push(new MapTile());
+        mapTiles[i].setIndex(i);
+        mapTiles[i].setNeighboursIndexes(getNeighboursFromIndex(i));
+        console.log("Index: " + i + " Type: " + mapTiles[i].getType());
+        mapTiles[i].printNeighboursIndexes();
     }
-    else{
+
+    if(sameResourcesCanTouch===true || randomGenerate===true){ //generates a random tile placement
+        console.log("random generation RandomGen: " + randomGenerate + " sameRes: " + sameResourcesCanTouch);
         for(let i = 0; i<19; i++){
-            mapTiles.push(new MapTile(getRandomHexType(hexTypes, remainingFieldNumber), -1));
+            mapTiles[i].setType(getRandomHexType(hexTypes, remainingFieldNumber));
             remainingFieldNumber.set(mapTiles[i].getType(), remainingFieldNumber.get(mapTiles[i].getType())-1);
         }
     }
+    else if(sameResourcesCanTouch===false){ //generates a map where no same resources can touch
+        for (let i = 0; i < 19; i++) {
+            const neighbours = mapTiles[i].getNeighboursIndexes().map(index => mapTiles[index].getType());
+            const hexType = getRandomHexType(hexTypes.filter(type => !neighbours.includes(type)), remainingFieldNumber);
+            mapTiles[i].setType(hexType);
+            remainingFieldNumber.set(hexType, remainingFieldNumber.get(hexType) - 1);
+        }
 
-    
+    }
+
     return mapTiles;
 }
+
+
 
 function fillMaxFieldNumber():Map<string, number>{
     let maxFieldNumber = new Map<string, number>();
@@ -37,6 +54,7 @@ export function getRandomHexType(hexTypes: string[], remainingFieldNumber:Map<st
     if(remainingFieldNumber.get(hexTypes[randomIndex]) === 0){
         return getRandomHexType(hexTypes, remainingFieldNumber);
     }
+    
     return hexTypes[randomIndex];
 }
 

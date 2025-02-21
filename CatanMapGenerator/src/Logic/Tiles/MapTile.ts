@@ -2,11 +2,13 @@ export class MapTile {
     private type: string;
     private value: number;
     private Neighbours: MapTile[] = [];
+    private neighboursIndexes: number[] = [];
+    private index: number = -1;
 
     public getType(): string {
         return this.type;
     }
-    setTypes(type: string): void {
+    setType(type: string): void {
         if(type === "Desert" || type === "Forest" || type === "Mountain" 
             || type === "Field" || type === "Hill" || type === "Pasture"){
             this.type = type;
@@ -30,7 +32,7 @@ export class MapTile {
         this.Neighbours.push(neighbour);
     }
     
-    constructor(type: string, value: number) {
+    constructor(type: string = "INVALID", value: number = -1) {
         this.type = type;
         this.value = value;
     }
@@ -38,4 +40,24 @@ export class MapTile {
     public toString(): string {
         return this.type + " " + this.value;
     }
+
+    public addNeighbourIndex(index: number): void {
+        this.neighboursIndexes.push(index);
+    }
+    public setNeighboursIndexes(neighboursIndexes: number[]): void {
+        this.neighboursIndexes = neighboursIndexes;
+    }
+
+    public getNeighboursIndexes(): number[] {
+        return this.neighboursIndexes;
+    }
+
+    public printNeighboursIndexes(): void {
+        console.log(this.neighboursIndexes);
+    }
+
+    public setIndex(index: number): void {
+        this.index = index;
+    }
 }
+
