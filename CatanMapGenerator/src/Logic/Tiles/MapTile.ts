@@ -10,7 +10,8 @@ export class MapTile {
     }
     setType(type: string): void {
         if(type === "Desert" || type === "Forest" || type === "Mountain" 
-            || type === "Field" || type === "Hill" || type === "Pasture"){
+            || type === "Field" || type === "Hill" || type === "Pasture" 
+            || type === "INVALID") {
             this.type = type;
         }
         else throw new Error("Invalid type");
