@@ -6,6 +6,13 @@ export class MapTile {
     public getType(): string {
         return this.type;
     }
+    setTypes(type: string): void {
+        if(type === "Desert" || type === "Forest" || type === "Mountain" 
+            || type === "Field" || type === "Hill" || type === "Pasture"){
+            this.type = type;
+        }
+        else throw new Error("Invalid type");
+    }
 
     public getValue(): number {
         return this.value;
@@ -31,7 +38,4 @@ export class MapTile {
     public toString(): string {
         return this.type + " " + this.value;
     }
-
-
-
 }

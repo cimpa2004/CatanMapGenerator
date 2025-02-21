@@ -1,6 +1,6 @@
 import { render } from 'preact';
 import './index.less';
-import { Map } from './GUI/Containers/Map';
+import { CatanMap } from './GUI/Containers/Map';
 
 
 export function App() {
@@ -16,7 +16,8 @@ export function App() {
 			
 			{/*<OptionsPanel/>*/}
 
-			<Map/>
+			<CatanMap badNumbersCanTouch={true} goodNumbersCanTouch={false} 
+			sameNumbersCanTouch={true} sameResourcesCanTouch={true} randomGenerate={false}/>
 		</div>
 	);
 }
