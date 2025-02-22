@@ -60,5 +60,9 @@ export class MapTile {
     public setIndex(index: number): void {
         this.index = index;
     }
+
+    public getIndex(): number {
+        return this.index;
+    }
 }
 
