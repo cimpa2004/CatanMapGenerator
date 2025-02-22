@@ -1,15 +1,27 @@
 import { MapTile } from "./Tiles/MapTile";
 
 export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: string[], remainingFieldNumber: Map<string, number>, index: number): boolean {
+    if (index === 0) {
+        // Place the desert tile at a random index
+        //just to make it more random
+        const desertIndex = Math.floor(Math.random() * mapTiles.length);
+        mapTiles[desertIndex].setType("Desert");
+        remainingFieldNumber.set("Desert", remainingFieldNumber.get("Desert") - 1);
+    }
+
     if (index === mapTiles.length) {
         return true; // All tiles have been successfully placed
     }
 
+    // Skip the desert tile
+    if (mapTiles[index].getType() === "Desert") {
+        return generateMapWithBacktracking(mapTiles, hexTypes, remainingFieldNumber, index + 1);
+    }
+
     const neighbours = mapTiles[index].getNeighboursIndexes().map(i => mapTiles[i].getType());
-    const availableHexTypes = hexTypes.filter(type => !neighbours.includes(type) && remainingFieldNumber.get(type) > 0);
+    const availableHexTypes = hexTypes.filter(type => type !== "Desert" && !neighbours.includes(type) && remainingFieldNumber.get(type) > 0);
 
     shuffleArray(availableHexTypes); // Shuffle the available hex types to add randomness
-    
 
     for (const hexType of availableHexTypes) {
         mapTiles[index].setType(hexType);
