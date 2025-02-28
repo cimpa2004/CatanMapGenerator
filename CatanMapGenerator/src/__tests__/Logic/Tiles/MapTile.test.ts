@@ -24,12 +24,6 @@ describe('MapTile', () => {
     expect(tile.getValue()).toBe(5);
   });
 
-  it('add neigbours', () => {
-    const tile1 = new MapTile();
-    const tile2 = new MapTile();
-    tile1.addNeighbour(tile2);
-    expect(tile1.getNeighbours()).toContain(tile2);
-  });
 
   it('set neigbours indexes', () => {
     const tile = new MapTile();

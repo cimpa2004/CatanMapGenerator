@@ -3,6 +3,16 @@ import { getNeighboursFromIndex } from "./getNeighboursFromIndex";
 import { getRandomHexType } from "./getRandomHexType";
 import { MapTile } from "./Tiles/MapTile";
 
+/**
+ * Generates a map with the given parameters
+ * @param goodNumbersCanTouch if true, good numbers can touch
+ * @param badNumbersCanTouch if true, bad numbers can touch
+ * @param sameNumbersCanTouch if true, same numbers can touch
+ * @param sameResourcesCanTouch if true, same resources can touch
+ * @param randomGenerate if true, generates a random map ignoring other params
+ * @returns an array of MapTiles representing the generated map 
+ * where the indexes are left to right and top to bottom representation of the maptiles in the large hexagon
+ */
 export function generateMap(goodNumbersCanTouch: boolean, badNumbersCanTouch: boolean,
     sameNumbersCanTouch: boolean, sameResourcesCanTouch: boolean, randomGenerate: boolean): MapTile[] {
     const hexTypes = ["Desert", "Forest", "Mountain", "Field", "Hill", "Pasture"];
@@ -33,6 +43,10 @@ export function generateMap(goodNumbersCanTouch: boolean, badNumbersCanTouch: bo
     return mapTiles;
 }
 
+/**
+ * Fills the maximum number of each field type
+ * @returns a map with the maximum number of each field type
+ */
 function fillMaxFieldNumber(): Map<string, number> {
     let maxFieldNumber = new Map<string, number>();
     maxFieldNumber.set("Desert", 1);

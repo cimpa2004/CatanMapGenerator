@@ -1,9 +1,16 @@
 import { MapTile } from "./Tiles/MapTile";
 
+/**
+ * Recursive backtracking algorithm to generate a map where no similar hex types are touching each other
+ * @param mapTiles tiles to be placed on the map
+ * @param hexTypes all hex types to place on the map
+ * @param remainingFieldNumber remaining number of each hex type to place
+ * @param index of the current tile
+ * @returns 
+ */
 export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: string[], remainingFieldNumber: Map<string, number>, index: number): boolean {
     if (index === 0) {
-        // Place the desert tile at a random index
-        //just to make it more random
+        // Place the desert tile at a random index (makes the desert placement more random)
         const desertIndex = Math.floor(Math.random() * mapTiles.length);
         mapTiles[desertIndex].setType("Desert");
         remainingFieldNumber.set("Desert", remainingFieldNumber.get("Desert") - 1);

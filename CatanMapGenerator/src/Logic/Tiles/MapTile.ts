@@ -1,7 +1,6 @@
 export class MapTile {
     private type: string;
     private value: number;
-    private Neighbours: MapTile[] = [];
     private neighboursIndexes: number[] = [];
     private index: number = -1;
 
@@ -25,13 +24,6 @@ export class MapTile {
         this.value = value;
     }
 
-    public getNeighbours(): MapTile[] {
-        return this.Neighbours;
-    }
-
-    public addNeighbour(neighbour: MapTile): void {
-        this.Neighbours.push(neighbour);
-    }
     
     constructor(type: string = "INVALID", value: number = -1) {
         this.type = type;

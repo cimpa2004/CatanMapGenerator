@@ -1,6 +1,6 @@
 /**
- * Ugliest function ever
- * untill i have a better idea this will do
+ * Get the neighbours of a cell from its index
+ * //TOOD: Make this function more generic
  * @param index 
  */
 export function getNeighboursFromIndex(index:number):number[]{

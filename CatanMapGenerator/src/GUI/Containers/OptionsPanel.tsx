@@ -4,6 +4,7 @@ type OptionPanelProps = {
 
 };
 
+//TODO: bind options to map generation
 export function OptionsPanel({}: Readonly<OptionPanelProps>) {
     return <div class="optionsPanel">
         <RoundedColoredButtonWithText text="Random Generate" color="#0015FF" onClick={() => {}} callback={() => {}} />

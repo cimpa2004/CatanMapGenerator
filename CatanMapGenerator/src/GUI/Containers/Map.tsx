@@ -16,6 +16,9 @@ type MapProps = {
     randomGenerate: boolean;
 };
 
+/**
+ * Map container that generates a Catan map based on the given parameters.
+ */
 const hexComponentMap: { [key: string]: React.ComponentType<{ value: number; altText: string }> } = {
     Desert: DesertHex,
     Forest: ForestHex,
@@ -25,6 +28,16 @@ const hexComponentMap: { [key: string]: React.ComponentType<{ value: number; alt
     Pasture: PastureHex,
 };
 
+
+/**
+ * Visual representation of the Catan map made by generateMap function.
+ * @param goodNumbersCanTouch
+ * @param badNumbersCanTouch
+ * @param sameNumbersCanTouch
+ * @param sameResourcesCanTouch
+ * @param randomGenerate
+ * @returns 
+ */
 export function CatanMap({ goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate }: Readonly<MapProps>) {
     const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch,randomGenerate);
 
