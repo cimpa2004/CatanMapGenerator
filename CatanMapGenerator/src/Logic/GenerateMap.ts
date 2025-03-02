@@ -24,8 +24,9 @@ export function generateMap(goodNumbersCanTouch: boolean, badNumbersCanTouch: bo
         mapTiles.push(new MapTile());
         mapTiles[i].setIndex(i);
         mapTiles[i].setNeighboursIndexes(getNeighboursFromIndex(i));
-        console.log("Index: " + i + " Type: " + mapTiles[i].getType());
-        mapTiles[i].printNeighboursIndexes();
+        //debug:
+        //console.log("Index: " + i + " Type: " + mapTiles[i].getType());
+        //mapTiles[i].printNeighboursIndexes();
     }
 
     if (sameResourcesCanTouch === true || randomGenerate === true) { // Generates a random tile placement

@@ -6,14 +6,6 @@ import { CatanMap } from './GUI/Containers/Map';
 export function App() {
 	return (
 		<div>
-			{/*<RoundedColoredButtonWithText text="Hello" color="red" onClick={() => {}} callback={() => {}} />
-			<DesertHex/>
-			<FieldHex/>
-			<ForestHex/>
-			<HillHex/>
-			<MountainHex/>
-			<PastureHex/>*/}
-			
 			{/*<OptionsPanel/>*/}
 
 			<CatanMap badNumbersCanTouch={true} goodNumbersCanTouch={false} 

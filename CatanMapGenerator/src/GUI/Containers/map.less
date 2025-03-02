@@ -13,10 +13,10 @@
 
 .hex-row:nth-child(odd) {
     margin-left: 0rem; 
-    
 }
 
 .hexagon {
+    position: relative; /* Add this to position the number absolutely within the hexagon */
     width: 5rem;
     height: calc(5rem * 1.1547); 
     background-color: #f0f0f0;
@@ -38,3 +38,16 @@
     max-width: 100%;
     max-height: 100%;
 }
+
+.number {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 10rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%; 
+}
+
+
