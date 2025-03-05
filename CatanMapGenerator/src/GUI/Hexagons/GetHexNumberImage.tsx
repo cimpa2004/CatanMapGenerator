@@ -14,28 +14,76 @@ import defaultImg from "../../assets/Numbers/99.png";
 export function getHexNumberImage({ value }: { value: number }) {
     switch (value) {
         case 2:
-            return <img src={twoImg} alt="two" className="number" />;
+            return (
+                <div className="number">
+                    <img src={twoImg} alt="two" />
+                </div>
+            );
         case 3:
-            return <img src={threeImg} alt="three" className="number" />;
+            return (
+                <div className="number">
+                    <img src={threeImg} alt="three" />
+                </div>
+            );
         case 4:
-            return <img src={fourImg} alt="four" className="number" />;
+            return (
+                <div className="number">
+                    <img src={fourImg} alt="four" />
+                </div>
+            );
         case 5:
-            return <img src={fiveImg} alt="five" className="number" />;
+            return (
+                <div className="number">
+                    <img src={fiveImg} alt="five" />
+                </div>
+            );
         case 6:
-            return <img src={sixImg} alt="six" className="number" />;
+            return (
+                <div className="number">
+                    <img src={sixImg} alt="six" />
+                </div>
+            );
         case 7:
-            return <img src={sevenImg} alt="seven" className="number" />;
+            return (
+                <div className="number">
+                    <img src={sevenImg} alt="seven" />
+                </div>
+            );
         case 8:
-            return <img src={eightImg} alt="eight" className="number" />;
+            return (
+                <div className="number">
+                    <img src={eightImg} alt="eight" />
+                </div>
+            );
         case 9:
-            return <img src={nineImg} alt="nine" className="number" />;
+            return (
+                <div className="number">
+                    <img src={nineImg} alt="nine" />
+                </div>
+            );
         case 10:
-            return <img src={tenImg} alt="ten" className="number" />;
+            return (
+                <div className="number">
+                    <img src={tenImg} alt="ten" />
+                </div>
+            );
         case 11:
-            return <img src={elevenImg} alt="eleven" className="number" />;
+            return (
+                <div className="number">
+                    <img src={elevenImg} alt="eleven" />
+                </div>
+            );
         case 12:
-            return <img src={twelveImg} alt="twelve" className="number" />;
+            return (
+                <div className="number">
+                    <img src={twelveImg} alt="twelve" />
+                </div>
+            );
         default:
-            return <img src={defaultImg} alt="default" className="number" />;
+            return (
+                <div className="number">
+                    <img src={defaultImg} alt="default" />
+                </div>
+            );
     }
 }

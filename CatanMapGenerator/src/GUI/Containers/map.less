@@ -1,3 +1,4 @@
+
 .hex-grid {
     display: flex;
     flex-direction: column;
@@ -16,7 +17,8 @@
 }
 
 .hexagon {
-    position: relative; /* Add this to position the number absolutely within the hexagon */
+    position: relative; 
+    display: flex;
     width: 5rem;
     height: calc(5rem * 1.1547); 
     background-color: #f0f0f0;
@@ -31,23 +33,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0.25rem 0.5rem; /* Adjust the margin to ensure hexagons stay together */
+    margin: 0.25rem 0.5rem; 
 }
 
-.hexagon img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
+//bit of a hack to get the number to be in the middle of the hexagon
 .number {
-    position: relative;
+    position: absolute;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: right;
+    align-items: right;
     width: 10rem;
     height: 10rem;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 50%; 
+    transform: translateY(-22rem) translateX(10rem);
 }
 
 
