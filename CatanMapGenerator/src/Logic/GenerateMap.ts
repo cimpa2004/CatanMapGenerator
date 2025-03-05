@@ -1,6 +1,7 @@
 import { generateMapWithBacktracking } from "./generateMapWithBacktracking";
 import { getNeighboursFromIndex } from "./getNeighboursFromIndex";
 import { getRandomHexType } from "./getRandomHexType";
+import { placeNumbers } from "./placeNumbers";
 import { MapTile } from "./Tiles/MapTile";
 
 /**
@@ -40,6 +41,8 @@ export function generateMap(goodNumbersCanTouch: boolean, badNumbersCanTouch: bo
             throw new Error("Failed to generate a valid map");
         }
     }
+
+    placeNumbers(mapTiles, goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, randomGenerate);
 
     return mapTiles;
 }
