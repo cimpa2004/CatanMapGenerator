@@ -6,7 +6,7 @@ import { MapTile } from "./Tiles/MapTile";
  * @param hexTypes all hex types to place on the map
  * @param remainingFieldNumber remaining number of each hex type to place
  * @param index of the current tile
- * @returns 
+ * @returns the 
  */
 export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: string[], remainingFieldNumber: Map<string, number>, index: number): boolean {
     if (index === 0) {
@@ -50,7 +50,7 @@ export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: strin
  * Fisher-Yates shuffle best for performance
  * @param array 
  */
-function shuffleArray(array: any[]) {
+export function shuffleArray(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];

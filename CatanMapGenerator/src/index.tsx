@@ -8,7 +8,7 @@ export function App() {
 		<div>
 			{/*<OptionsPanel/>*/}
 
-			<CatanMap badNumbersCanTouch={true} goodNumbersCanTouch={true} 
+			<CatanMap badNumbersCanTouch={false} goodNumbersCanTouch={true} 
 			sameNumbersCanTouch={true} sameResourcesCanTouch={false} randomGenerate={false}/>
 		</div>
 	);
