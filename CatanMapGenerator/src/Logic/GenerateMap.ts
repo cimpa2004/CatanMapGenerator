@@ -7,6 +7,11 @@ import { MapTile } from "./Tiles/MapTile";
 export class MapGenerator {
     private mapTiles: MapTile[] = [];
     private static instance: MapGenerator = null;
+    private clearMap: MapTile[] = Array.from({ length: 19 }, () => {
+        const tile = new MapTile();
+        tile.setType("Desert");
+        return tile;
+    });
 
     public static getInstance() {
         if (MapGenerator.instance === null) {
@@ -14,6 +19,7 @@ export class MapGenerator {
         }
         return MapGenerator.instance;
     }
+    
     private remainingFieldNumber = fillMaxFieldNumber();
 
     private setNeigbours(){
@@ -47,6 +53,9 @@ export class MapGenerator {
     public generateMap(goodNumbersCanTouch: boolean, badNumbersCanTouch: boolean,
         sameNumbersCanTouch: boolean, sameResourcesCanTouch: boolean, randomGenerate: boolean, onlyTiles: boolean = false, onlyNumbers: boolean = false, clear: boolean = false): MapTile[] {
         try {
+            if(clear === true){
+                return this.clearMap;
+            }
             if (onlyNumbers === false) {
                 for (let tile of this.mapTiles) {
                     tile.setType("INVALID");

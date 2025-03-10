@@ -1,6 +1,6 @@
 import "./OptionsPanel.less";
 import { RoundedColoredButtonWithText } from "../Buttons/RoundedColoredButtonWithText";
-import { useState } from "preact/hooks"; // Ensure Preact hooks are used
+import { useState } from "preact/hooks"; 
 import { OptionsState } from "../..";
 
 type OptionPanelProps = {
@@ -17,6 +17,9 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
         sameNumbersCanTouch: false,
         sameResourcesCanTouch: false,
         randomGenerate: false,
+        onlyTiles: false,
+        onlyNumbers: false,
+        clear: false,
         _updateTime: Date.now()
     });
 
@@ -27,6 +30,9 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
 
     const handleSmartGenerate = () => {
         setOptions({ ...optionsState, _updateTime: Date.now() });
+    };
+    const handleModularGenerateAndClear = (_onlyTiles:boolean,_onlyNumbers:boolean,_clear:boolean) => {
+        setOptions({ ...optionsState, onlyTiles:_onlyTiles,onlyNumbers:_onlyNumbers,clear:_clear});
     };
 
     return (
@@ -41,6 +47,9 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
                         sameNumbersCanTouch: false,
                         sameResourcesCanTouch: false,
                         randomGenerate: true,
+                        onlyTiles: false,
+                        onlyNumbers: false,
+                        clear: false,
                         _updateTime: Date.now()
                     });
                 }}
@@ -53,7 +62,7 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
                 <table>
                     <tbody>
                         <tr>
-                            <td>Good numbers can touch</td>
+                            <td>6 & 8 can touch</td>
                             <td>
                                 <input
                                     type="checkbox"
@@ -64,7 +73,7 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
                             </td>
                         </tr>
                         <tr>
-                            <td>Bad numbers can touch</td>
+                            <td>2 & 12 can touch</td>
                             <td>
                                 <input
                                     type="checkbox"
@@ -100,9 +109,10 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
                 </table>
             </div>
             <RoundedColoredButtonWithText text="Smart generate" color="#FF0000" onClick={handleSmartGenerate} callback={() => { }} />
-            <RoundedColoredButtonWithText text="Regenerate numbers" color="#0015FF" onClick={() => { }} callback={() => { }} />
-            <RoundedColoredButtonWithText text="Regenerate tiles" color="#0015FF" onClick={() => { }} callback={() => { }} />
-            <RoundedColoredButtonWithText text="Clear" color="#FF0000" onClick={() => { }} callback={() => { }} />
+            <RoundedColoredButtonWithText text="Regenerate numbers" color="#0015FF" onClick={() => {handleModularGenerateAndClear(false,true,false)}} callback={() => { }} />
+            {/* does this even make sense?  */}
+            <RoundedColoredButtonWithText text="Regenerate tiles" color="#0015FF" onClick={() => {handleModularGenerateAndClear(true,false,false) }} callback={() => { }} />
+            <RoundedColoredButtonWithText text="Clear" color="#FF0000" onClick={() => {handleModularGenerateAndClear(false,false,true) }} callback={() => { }} />
         </div>
     );
 }

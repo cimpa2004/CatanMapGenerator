@@ -82,7 +82,6 @@ export function getHexNumberImage({ value }: { value: number }) {
         default:
             return (
                 <div className="number">
-                    <img src={defaultImg} alt="default" />
                 </div>
             );
     }

@@ -14,6 +14,9 @@ type MapProps = {
     sameNumbersCanTouch: boolean;
     sameResourcesCanTouch: boolean;
     randomGenerate: boolean;
+    onlyTiles:boolean;
+    onlyNumbers:boolean;
+    clear:boolean;
 };
 
 /**
@@ -38,9 +41,9 @@ const hexComponentMap: { [key: string]: React.ComponentType<{ value: number; alt
  * @param randomGenerate
  * @returns 
  */
-export function CatanMap({ goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate }: Readonly<MapProps>) {
+export function CatanMap({ goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate,onlyTiles=false,onlyNumbers= false,clear= false }: Readonly<MapProps>) {
     const [mapGenerator, setMapGenerator] = useState(() => MapGenerator.getInstance());
-    const mapTiles = mapGenerator.generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate);
+    const mapTiles = mapGenerator.generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate,onlyTiles,onlyNumbers,clear);
     
     //const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate);
 

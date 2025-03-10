@@ -10,6 +10,9 @@ export type OptionsState = {
     sameNumbersCanTouch: boolean;
     sameResourcesCanTouch: boolean;
     randomGenerate: boolean;
+    onlyTiles: boolean;
+    onlyNumbers: boolean;
+    clear: boolean;
     _updateTime: number;
 };
 
@@ -20,6 +23,9 @@ export function App() {
         sameNumbersCanTouch: false,
         sameResourcesCanTouch: false,
         randomGenerate: false,
+        onlyTiles: false,
+        onlyNumbers: false,
+        clear: false,
         _updateTime: Date.now()
     });
 
