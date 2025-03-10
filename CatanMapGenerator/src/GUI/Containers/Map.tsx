@@ -1,6 +1,6 @@
 import { DesertHex } from "../Hexagons/DesertHex";
-import { ForestHex } from "../Hexagons/ForestHex"; 
-import { MountainHex } from "../Hexagons/MountainHex"; 
+import { ForestHex } from "../Hexagons/ForestHex";
+import { MountainHex } from "../Hexagons/MountainHex";
 import { FieldHex } from "../Hexagons/FieldHex";
 import { HillHex } from "../Hexagons/HillHex";
 import { PastureHex } from "../Hexagons/Pasture";
@@ -39,9 +39,9 @@ const hexComponentMap: { [key: string]: React.ComponentType<{ value: number; alt
  * @returns 
  */
 export function CatanMap({ goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate }: Readonly<MapProps>) {
-    const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch,randomGenerate);
+    const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate);
 
-    const hexagonPattern = [3, 4, 5, 4, 3]; 
+    const hexagonPattern = [3, 4, 5, 4, 3];
 
     const hexagons = hexagonPattern.map((count, row) => {
         const hexagonsInRow = Array.from({ length: count }, (_, col) => {
