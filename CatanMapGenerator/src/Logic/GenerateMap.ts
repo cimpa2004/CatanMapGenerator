@@ -1,10 +1,40 @@
-import { generateMapWithBacktracking } from "./generateMapWithBacktracking";
+import { generateTiles } from "./GenerateTiles";
 import { getNeighboursFromIndex } from "./getNeighboursFromIndex";
-import { getRandomHexType } from "./getRandomHexType";
 import { placeNumbers } from "./placeNumbers";
 import { MapTile } from "./Tiles/MapTile";
 
-/**
+//Singleton class to manage map generation
+export class MapGenerator {
+    private mapTiles: MapTile[] = [];
+    private static instance: MapGenerator = null;
+
+    public static getInstance() {
+        if (MapGenerator.instance === null) {
+            MapGenerator.instance = new MapGenerator();
+        }
+        return MapGenerator.instance;
+    }
+    private remainingFieldNumber = fillMaxFieldNumber();
+
+    private setNeigbours(){
+        for (let i = 0; i < 19; i++) {
+            this.mapTiles.push(new MapTile());
+            this.mapTiles[i].setIndex(i);
+            this.mapTiles[i].setNeighboursIndexes(getNeighboursFromIndex(i));
+        }
+    }
+    private readonly hexTypes = ["Desert", "Forest", "Mountain", "Field", "Hill", "Pasture"];
+
+    private constructor() {
+        if (MapGenerator.instance === null) {
+            this.setNeigbours();
+            return this;
+        } else {
+            MapGenerator.getInstance().setNeigbours();
+            return MapGenerator.instance;
+        }
+    }
+    /**
  * Generates a map with the given parameters
  * @param goodNumbersCanTouch if true, good numbers can touch
  * @param badNumbersCanTouch if true, bad numbers can touch
@@ -14,37 +44,29 @@ import { MapTile } from "./Tiles/MapTile";
  * @returns an array of MapTiles representing the generated map 
  * where the indexes are left to right and top to bottom representation of the maptiles in the large hexagon
  */
-export function generateMap(goodNumbersCanTouch: boolean, badNumbersCanTouch: boolean,
-    sameNumbersCanTouch: boolean, sameResourcesCanTouch: boolean, randomGenerate: boolean): MapTile[] {
-    const hexTypes = ["Desert", "Forest", "Mountain", "Field", "Hill", "Pasture"];
-    let remainingFieldNumber = fillMaxFieldNumber();
-    let mapTiles: MapTile[] = [];
+    public generateMap(goodNumbersCanTouch: boolean, badNumbersCanTouch: boolean,
+        sameNumbersCanTouch: boolean, sameResourcesCanTouch: boolean, randomGenerate: boolean, onlyTiles: boolean = false, onlyNumbers: boolean = false, clear: boolean = false): MapTile[] {
+        try {
+            if (onlyNumbers === false) {
+                for (let tile of this.mapTiles) {
+                    tile.setType("INVALID");
+                    this.remainingFieldNumber = fillMaxFieldNumber();
+                }
+                generateTiles(this.mapTiles, this.hexTypes, this.remainingFieldNumber, sameResourcesCanTouch, randomGenerate);
+            }
 
-    // Setting tile indexes and neighbourIndexes
-    for (let i = 0; i < 19; i++) {
-        mapTiles.push(new MapTile());
-        mapTiles[i].setIndex(i);
-        mapTiles[i].setNeighboursIndexes(getNeighboursFromIndex(i));
-        //debug:
-        //console.log("Index: " + i + " Type: " + mapTiles[i].getType());
-        //mapTiles[i].printNeighboursIndexes();
-    }
 
-    if (sameResourcesCanTouch === true || randomGenerate === true) { // Generates a random tile placement
-        console.log("random generation RandomGen: " + randomGenerate + " sameRes: " + sameResourcesCanTouch);
-        for (let i = 0; i < 19; i++) {
-            mapTiles[i].setType(getRandomHexType(hexTypes, remainingFieldNumber));
-            remainingFieldNumber.set(mapTiles[i].getType(), remainingFieldNumber.get(mapTiles[i].getType()) - 1);
+            if (onlyTiles === false) {
+                for (let tile of this.mapTiles) {
+                    tile.setValue(-1);
+                }
+                placeNumbers(this.mapTiles, goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, randomGenerate);
+            }
+        } catch (e) {
+            console.log(e);
         }
-    } else if (sameResourcesCanTouch === false) { // Generates a map where no same resources can touch
-        if (!generateMapWithBacktracking(mapTiles, hexTypes, remainingFieldNumber, 0)) {
-            throw new Error("Failed to generate a valid map");
-        }
+        return this.mapTiles;
     }
-
-    placeNumbers(mapTiles, goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, randomGenerate);
-
-    return mapTiles;
 }
 
 /**

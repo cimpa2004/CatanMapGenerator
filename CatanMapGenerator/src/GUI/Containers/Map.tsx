@@ -4,9 +4,9 @@ import { MountainHex } from "../Hexagons/MountainHex";
 import { FieldHex } from "../Hexagons/FieldHex";
 import { HillHex } from "../Hexagons/HillHex";
 import { PastureHex } from "../Hexagons/Pasture";
-import { generateMap } from "../../Logic/GenerateMap";
+import { MapGenerator } from "../../Logic/GenerateMap";
 import "./Map.less";
-import React from "preact/compat";
+import React, { useState } from "preact/compat";
 
 type MapProps = {
     goodNumbersCanTouch: boolean;
@@ -39,7 +39,10 @@ const hexComponentMap: { [key: string]: React.ComponentType<{ value: number; alt
  * @returns 
  */
 export function CatanMap({ goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate }: Readonly<MapProps>) {
-    const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate);
+    const [mapGenerator, setMapGenerator] = useState(() => MapGenerator.getInstance());
+    const mapTiles = mapGenerator.generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate);
+    
+    //const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate);
 
     const hexagonPattern = [3, 4, 5, 4, 3];
 

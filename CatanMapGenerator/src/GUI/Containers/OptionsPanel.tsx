@@ -26,7 +26,7 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
     };
 
     const handleSmartGenerate = () => {
-        setOptions({ ...optionsState, _updateTime: Date.now() }); // Force update
+        setOptions({ ...optionsState, _updateTime: Date.now() });
     };
 
     return (
