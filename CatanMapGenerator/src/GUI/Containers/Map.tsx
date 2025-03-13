@@ -45,8 +45,6 @@ export function CatanMap({ goodNumbersCanTouch, badNumbersCanTouch, sameNumbersC
     const [mapGenerator, setMapGenerator] = useState(() => MapGenerator.getInstance());
     const mapTiles = mapGenerator.generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate,onlyTiles,onlyNumbers,clear);
     
-    //const mapTiles = generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate);
-
     const hexagonPattern = [3, 4, 5, 4, 3];
 
     const hexagons = hexagonPattern.map((count, row) => {

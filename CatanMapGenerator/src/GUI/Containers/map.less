@@ -1,26 +1,24 @@
-
 .hex-grid {
+    position: absolute;
+    right: 20%; /* Aligns the map to the right side */
+    top: 50%; /* Centers it vertically */
+    transform: translateY(-50%) scale(0.3); /* Scales it down and centers it */
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
 }
 
 .hex-row {
     display: flex;
     justify-content: center;
-    height: 25rem;
-    width: 25rem;
-}
-
-.hex-row:nth-child(odd) {
-    margin-left: 0rem; 
+    height: 25em; //changes the vertical distance between rows
+    width: 15em; //changes the horizolnatl distance between colums
 }
 
 .hexagon {
-    position: relative; 
-    display: flex;
-    width: 5rem;
-    height: calc(5rem * 1.1547); 
+    position: relative;
+    width: 4em; 
+    height: calc(4em * 1.1547);
     background-color: #f0f0f0;
     clip-path: polygon(
         50% 0%,
@@ -33,7 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0.25rem 0.5rem; 
+    margin: 0.2em 0.4em;
 }
 
 //bit of a hack to get the number to be in the middle of the hexagon
