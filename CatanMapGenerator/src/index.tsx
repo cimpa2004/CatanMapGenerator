@@ -30,7 +30,7 @@ export function App() {
     });
 
     return (
-        <div>
+        <div class="main">
             <OptionsPanel options={options} setOptions={setOptions} />
             <CatanMap {...options} />
         </div>
