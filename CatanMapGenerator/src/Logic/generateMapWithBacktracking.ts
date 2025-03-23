@@ -6,14 +6,20 @@ import { MapTile } from "./Tiles/MapTile";
  * @param hexTypes all hex types to place on the map
  * @param remainingFieldNumber remaining number of each hex type to place
  * @param index of the current tile
- * @returns the 
+ * @param fixedDesert if true, fixes the desert position at the first index
+ * @returns boolean indicating whether the map was successfully generated
  */
-export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: string[], remainingFieldNumber: Map<string, number>, index: number): boolean {
+export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: string[], remainingFieldNumber: Map<string, number>, index: number, fixedDesert: boolean = false): boolean {
     if (index === 0) {
-        // Place the desert tile at a random index (makes the desert placement more random)
-        const desertIndex = Math.floor(Math.random() * mapTiles.length);
-        mapTiles[desertIndex].setType("Desert");
-        remainingFieldNumber.set("Desert", remainingFieldNumber.get("Desert") - 1);
+        if (fixedDesert) {
+            // Place the desert tile at the first index
+            remainingFieldNumber.set("Desert", remainingFieldNumber.get("Desert") - 1);
+        } else {
+            // Place the desert tile at a random index
+            const desertIndex = Math.floor(Math.random() * mapTiles.length);
+            mapTiles[desertIndex].setType("Desert");
+            remainingFieldNumber.set("Desert", remainingFieldNumber.get("Desert") - 1);
+        }
     }
 
     if (index === mapTiles.length) {
@@ -22,7 +28,7 @@ export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: strin
 
     // Skip the desert tile
     if (mapTiles[index].getType() === "Desert") {
-        return generateMapWithBacktracking(mapTiles, hexTypes, remainingFieldNumber, index + 1);
+        return generateMapWithBacktracking(mapTiles, hexTypes, remainingFieldNumber, index + 1, fixedDesert);
     }
 
     const neighbours = mapTiles[index].getNeighboursIndexes().map(i => mapTiles[i].getType());
@@ -34,7 +40,7 @@ export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: strin
         mapTiles[index].setType(hexType);
         remainingFieldNumber.set(hexType, remainingFieldNumber.get(hexType) - 1);
 
-        if (generateMapWithBacktracking(mapTiles, hexTypes, remainingFieldNumber, index + 1)) {
+        if (generateMapWithBacktracking(mapTiles, hexTypes, remainingFieldNumber, index + 1, fixedDesert)) {
             return true; // Successfully placed all tiles
         }
 

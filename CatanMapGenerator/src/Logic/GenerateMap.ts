@@ -58,10 +58,13 @@ export class MapGenerator {
             }
             if (onlyNumbers === false) {
                 for (let tile of this.mapTiles) {
+                    if (tile.getType() === "Desert" && onlyTiles === true) {
+                        continue;
+                    }
                     tile.setType("INVALID");
                     this.remainingFieldNumber = fillMaxFieldNumber();
                 }
-                generateTiles(this.mapTiles, this.hexTypes, this.remainingFieldNumber, sameResourcesCanTouch, randomGenerate);
+                generateTiles(this.mapTiles, this.hexTypes, this.remainingFieldNumber, sameResourcesCanTouch, randomGenerate, onlyTiles);
             }
 
 
