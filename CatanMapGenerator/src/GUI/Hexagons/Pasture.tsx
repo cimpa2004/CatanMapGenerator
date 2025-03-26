@@ -1,4 +1,4 @@
-import pastureImage from "../../assets/tiles/pasture.svg";
+import pastureImage from "../../assets/newTiles/wheat.png";
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 

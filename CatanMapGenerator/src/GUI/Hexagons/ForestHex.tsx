@@ -1,4 +1,4 @@
-import forestImage from "../../assets/tiles/forest.svg";
+import forestImage from "../../assets/newTiles/wood.png";
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 

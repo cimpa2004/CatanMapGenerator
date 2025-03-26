@@ -1,4 +1,4 @@
-import fieldImage from "../../assets/tiles/field.svg";
+import fieldImage from "../../assets/newTiles/sheep.png";
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 

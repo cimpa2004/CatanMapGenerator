@@ -1,4 +1,4 @@
-import mImage from "../../assets/tiles/mountain.svg";
+import mImage from "../../assets/newTiles/ore.png";
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 

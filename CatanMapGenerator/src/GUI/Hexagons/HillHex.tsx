@@ -1,4 +1,4 @@
-import hillImage from "../../assets/tiles/hill.svg";
+import hillImage from "../../assets/newTiles/brick.png";
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 
