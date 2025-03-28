@@ -45,7 +45,6 @@ describe("placeNumbers", () => {
     });
 
     it("GoodNumberCanTouch = false, BadNumbersCanTouch=false, SameNumberCanTouch=false, randomGenerate= false", () => {
-        //need a large sample size to ensure that the constraints are working not a 100% guarantee
         for (let i = 0; i < 1000; i++) {
             const allNumberTokens = new Map<number, number>([
                 [2, 1],

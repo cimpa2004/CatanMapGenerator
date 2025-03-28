@@ -7,6 +7,7 @@ import { MapTile } from "./Tiles/MapTile";
 export class MapGenerator {
     private mapTiles: MapTile[] = [];
     private static instance: MapGenerator = null;
+    
     private clearMap: MapTile[] = Array.from({ length: 19 }, () => {
         const tile = new MapTile();
         tile.setType("Desert");
