@@ -1,5 +1,5 @@
-//import mImage from "../../assets/newTiles/ore.png";
-import mImage from "../../assets/PetraTiles/mountain.png"; //PetraTiles
+import mImage from "../../assets/newTiles/ore.png";
+//import mImage from "../../assets/PetraTiles/mountain.png"; //PetraTiles
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 
