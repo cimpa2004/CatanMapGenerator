@@ -6,17 +6,18 @@ import { OptionsState } from "../..";
 type OptionPanelProps = {
     options: OptionsState;
     setOptions: (options: OptionsState) => void;
+    nightMode: boolean;
+    setNightMode: (nightMode: boolean) => void;
 };
 
 
-export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>) {
+export function OptionsPanel({ options, setOptions,nightMode,setNightMode }: Readonly<OptionPanelProps>) {
     const [optionsState, setOptionsState] = useState<OptionsState>({
         goodNumbersCanTouch: false,
         badNumbersCanTouch: false,
         sameNumbersCanTouch: false,
         sameResourcesCanTouch: false,
         randomGenerate: false,
-        nightMode: false,
         onlyTiles: false,
         onlyNumbers: false,
         clear: false,
@@ -25,8 +26,8 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
 
     const handleChange = (e: Event) => {
         const target = e.target as HTMLInputElement;
-        setOptionsState((prev) => ({ ...prev, [target.name]: target.checked }));
-
+        const newState = { ...optionsState, [target.name]: target.checked };
+        setOptionsState(newState);
     };
 
     const handleSmartGenerate = () => {
@@ -45,14 +46,12 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
                     text="Random Generate"
                     color="#0015FF"
                     onClick={() => {
-                        let _nightMode = optionsState.nightMode;
                         setOptions({
                             goodNumbersCanTouch: false,
                             badNumbersCanTouch: false,
                             sameNumbersCanTouch: false,
                             sameResourcesCanTouch: false,
                             randomGenerate: true,
-                            nightMode: _nightMode,
                             onlyTiles: false,
                             onlyNumbers: false,
                             clear: false,
@@ -122,8 +121,8 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
                         <input
                             type="checkbox"
                             name="nightMode"
-                            checked={optionsState.nightMode}
-                            onChange={handleChange}
+                            checked={nightMode}
+                            onChange={() => setNightMode(!nightMode)}
                         />
                         <span class="slider round"></span>
                     </label>

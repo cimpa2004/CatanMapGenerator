@@ -2,7 +2,7 @@ import { render } from 'preact';
 import './index.less';
 import { CatanMap } from './GUI/Containers/Map';
 import { OptionsPanel } from './GUI/Containers/OptionsPanel';
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 
 export type OptionsState = {
     goodNumbersCanTouch: boolean;
@@ -13,7 +13,6 @@ export type OptionsState = {
     onlyTiles: boolean;
     onlyNumbers: boolean;
     clear: boolean;
-    nightMode: boolean;
     _updateTime: number;
 };
 
@@ -24,17 +23,25 @@ export function App() {
         sameNumbersCanTouch: false,
         sameResourcesCanTouch: false,
         randomGenerate: false,
-        nightMode: false,
         onlyTiles: false,
         onlyNumbers: false,
         clear: false,
         _updateTime: Date.now()
     });
+    const [nightMode, setNightMode] = useState(false);
+    const [mapStaysTheSame, setMapStaysTheSame] = useState(false);
+
+    useEffect(() => {
+        if (nightMode) {
+            setMapStaysTheSame(true);
+            requestAnimationFrame(() => setMapStaysTheSame(false));
+        }
+    }, [nightMode]);
 
     return (
         <div class="main">
-            <OptionsPanel options={options} setOptions={setOptions} />
-            <CatanMap {...options}/>
+            <OptionsPanel options={options} setOptions={setOptions} nightMode={nightMode} setNightMode={setNightMode} />
+            <CatanMap {...options} nightMode={nightMode} mapStaysTheSame={mapStaysTheSame} />
         </div>
     );
 }
