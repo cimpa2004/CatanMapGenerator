@@ -4,6 +4,7 @@ import { CatanMap } from './GUI/Containers/Map';
 import { OptionsPanel } from './GUI/Containers/OptionsPanel';
 import { useState, useEffect } from 'preact/hooks';
 import { MapGenerator } from './Logic/GenerateMap';
+import { MapTile } from './Logic/Tiles/MapTile';
 
 export type OptionsState = {
     goodNumbersCanTouch: boolean;
@@ -17,25 +18,17 @@ export type OptionsState = {
     _updateTime: number;
 };
 
-class Temp {
+class MapViewStateHandler {
     private nightMode: boolean = false;
     private mapGenerator: MapGenerator = MapGenerator.getInstance();
     private mapTiles: any[] = this.mapGenerator.generateMap(false, false, false, false, false, false, false, false);
-    private memory: any[] = this.mapTiles;
 
     public getNightMode(): boolean {
         return this.nightMode;
     }
 
     public setNightMode(nightMode: boolean): void {
-        if (this.nightMode !== nightMode) {
-            this.nightMode = nightMode;
-            if (nightMode) {
-                this.memory = this.mapTiles; 
-            } else {
-                this.mapTiles = this.memory;
-            }
-        }
+        this.nightMode = nightMode;
     }
 
     public getMapTiles(): any[] {
@@ -68,18 +61,18 @@ export function App() {
         clear: false,
         _updateTime: Date.now()
     });
-    const [temp] = useState(() => new Temp());
+    const [mapViewStateHandler] = useState(() => new MapViewStateHandler());
     const [nightMode, setNightMode] = useState(false);
-    const [mapTiles, setMapTiles] = useState(temp.getMapTiles());
+    const [mapTiles, setMapTiles] = useState(mapViewStateHandler.getMapTiles());
 
     useEffect(() => {
-        temp.setNightMode(nightMode);
-        setMapTiles(temp.getMapTiles()); // Update map tiles immediately when night mode changes
+        mapViewStateHandler.setNightMode(nightMode);
+        setMapTiles([...mapViewStateHandler.getMapTiles()]); 
     }, [nightMode]);
 
     useEffect(() => {
-        temp.generateMap(options);
-        setMapTiles(temp.getMapTiles()); // Update map tiles immediately when options change
+        mapViewStateHandler.generateMap(options);
+        setMapTiles([...mapViewStateHandler.getMapTiles()]); 
     }, [options]);
 
     return (
