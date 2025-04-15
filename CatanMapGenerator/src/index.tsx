@@ -3,8 +3,7 @@ import './index.less';
 import { CatanMap } from './GUI/Containers/Map';
 import { OptionsPanel } from './GUI/Containers/OptionsPanel';
 import { useState, useEffect } from 'preact/hooks';
-import { MapGenerator } from './Logic/GenerateMap';
-import { MapTile } from './Logic/Tiles/MapTile';
+import { MapViewStateHandler } from './Logic/MapViewStateHandler';
 
 export type OptionsState = {
     goodNumbersCanTouch: boolean;
@@ -18,36 +17,7 @@ export type OptionsState = {
     _updateTime: number;
 };
 
-class MapViewStateHandler {
-    private nightMode: boolean = false;
-    private mapGenerator: MapGenerator = MapGenerator.getInstance();
-    private mapTiles: any[] = this.mapGenerator.generateMap(false, false, false, false, false, false, false, false);
 
-    public getNightMode(): boolean {
-        return this.nightMode;
-    }
-
-    public setNightMode(nightMode: boolean): void {
-        this.nightMode = nightMode;
-    }
-
-    public getMapTiles(): any[] {
-        return this.mapTiles;
-    }
-
-    public generateMap(options: OptionsState): void {
-        this.mapTiles = this.mapGenerator.generateMap(
-            options.goodNumbersCanTouch,
-            options.badNumbersCanTouch,
-            options.sameNumbersCanTouch,
-            options.sameResourcesCanTouch,
-            options.randomGenerate,
-            options.onlyTiles,
-            options.onlyNumbers,
-            options.clear
-        );
-    }
-}
 
 export function App() {
     const [options, setOptions] = useState<OptionsState>({
