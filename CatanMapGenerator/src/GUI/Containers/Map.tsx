@@ -7,18 +7,11 @@ import { PastureHex } from "../Hexagons/Pasture";
 import { MapGenerator } from "../../Logic/GenerateMap";
 import "./Map.less";
 import React, { useState,useEffect } from "preact/compat";
+import { MapTile } from "../../Logic/Tiles/MapTile";
 
 type MapProps = {
-    goodNumbersCanTouch: boolean;
-    badNumbersCanTouch: boolean;
-    sameNumbersCanTouch: boolean;
-    sameResourcesCanTouch: boolean;
-    randomGenerate: boolean;
+    mapTiles: MapTile[]; 
     nightMode: boolean;
-    onlyTiles:boolean;
-    onlyNumbers:boolean;
-    clear:boolean;
-    mapStaysTheSame:boolean;
 };
 
 /**
@@ -43,9 +36,7 @@ const hexComponentMap: { [key: string]: React.ComponentType<{ value: number; alt
  * @param randomGenerate
  * @returns 
  */
-export function CatanMap({ goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate,nightMode = false, onlyTiles=false,onlyNumbers= false,clear= false, mapStaysTheSame= false }: Readonly<MapProps>) {
-    const [mapGenerator, setMapGenerator] = useState(() => MapGenerator.getInstance());
-    const mapTiles = mapGenerator.generateMap(goodNumbersCanTouch, badNumbersCanTouch, sameNumbersCanTouch, sameResourcesCanTouch, randomGenerate,onlyTiles,onlyNumbers,clear, mapStaysTheSame);
+export function CatanMap({mapTiles, nightMode}: Readonly<MapProps>) {
     const hexagonPattern = [3, 4, 5, 4, 3];
 
     const hexagons = hexagonPattern.map((count, row) => {

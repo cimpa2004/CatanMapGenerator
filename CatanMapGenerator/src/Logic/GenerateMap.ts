@@ -52,11 +52,8 @@ export class MapGenerator {
  * where the indexes are left to right and top to bottom representation of the maptiles in the large hexagon
  */
     public generateMap(goodNumbersCanTouch: boolean, badNumbersCanTouch: boolean,
-        sameNumbersCanTouch: boolean, sameResourcesCanTouch: boolean, randomGenerate: boolean, onlyTiles: boolean = false, onlyNumbers: boolean = false, clear: boolean = false, mapStaysTheSame:boolean = false): MapTile[] {
+        sameNumbersCanTouch: boolean, sameResourcesCanTouch: boolean, randomGenerate: boolean, onlyTiles: boolean = false, onlyNumbers: boolean = false, clear: boolean = false): MapTile[] {
         try {
-            if(mapStaysTheSame === true){
-                return this.mapTiles;
-            }
             if(clear === true){
                 return this.clearMap;
             }
