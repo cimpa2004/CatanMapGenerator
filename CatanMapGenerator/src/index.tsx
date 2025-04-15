@@ -13,6 +13,7 @@ export type OptionsState = {
     onlyTiles: boolean;
     onlyNumbers: boolean;
     clear: boolean;
+    nightMode: boolean;
     _updateTime: number;
 };
 
@@ -23,6 +24,7 @@ export function App() {
         sameNumbersCanTouch: false,
         sameResourcesCanTouch: false,
         randomGenerate: false,
+        nightMode: false,
         onlyTiles: false,
         onlyNumbers: false,
         clear: false,
@@ -32,7 +34,7 @@ export function App() {
     return (
         <div class="main">
             <OptionsPanel options={options} setOptions={setOptions} />
-            <CatanMap {...options} />
+            <CatanMap {...options}/>
         </div>
     );
 }

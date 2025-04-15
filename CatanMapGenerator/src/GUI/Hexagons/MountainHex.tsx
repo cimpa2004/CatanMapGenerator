@@ -1,12 +1,16 @@
 import mImage from "../../assets/newTiles/ore.png";
-//import mImage from "../../assets/PetraTiles/mountain.png"; //PetraTiles
+import nightImage from "../../assets/PetraTiles/mountain.png"; //PetraTiles
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 
-export function MountainHex({value, altText }: Readonly<HexProps>) {
+export function MountainHex({value, altText,nightMode }: Readonly<HexProps>) {
+    let image = mImage;
+    if(nightMode===true){
+        image=nightImage;
+    }
     return (
         <div className="Hexagon">
-            <img src={mImage} alt={altText} />
+            <img src={image} alt={altText} />
             {getHexNumberImage({value})}
         </div>
     );

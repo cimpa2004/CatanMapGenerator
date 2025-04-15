@@ -1,11 +1,16 @@
 import fieldImage from "../../assets/newTiles/sheep.png";
+import nightImage from "../../assets/PetraTiles/placeholders/sheep.png"; //PetraTiles
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 
-export function FieldHex({ value,altText }: Readonly<HexProps>) {
+export function FieldHex({ value,altText,nightMode }: Readonly<HexProps>) {
+    let image = fieldImage;
+    if(nightMode===true){
+        image=nightImage;
+    }
     return (
         <div className="Hexagon">
-            <img src={fieldImage} alt={altText} />
+            <img src={image} alt={altText} />
             {getHexNumberImage({value})}
         </div>
     );

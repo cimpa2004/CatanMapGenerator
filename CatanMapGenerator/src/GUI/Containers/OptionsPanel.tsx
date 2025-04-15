@@ -10,13 +10,13 @@ type OptionPanelProps = {
 
 
 export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>) {
-    // Use state to track options properly
     const [optionsState, setOptionsState] = useState<OptionsState>({
         goodNumbersCanTouch: false,
         badNumbersCanTouch: false,
         sameNumbersCanTouch: false,
         sameResourcesCanTouch: false,
         randomGenerate: false,
+        nightMode: false,
         onlyTiles: false,
         onlyNumbers: false,
         clear: false,
@@ -26,6 +26,7 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
     const handleChange = (e: Event) => {
         const target = e.target as HTMLInputElement;
         setOptionsState((prev) => ({ ...prev, [target.name]: target.checked }));
+
     };
 
     const handleSmartGenerate = () => {
@@ -35,6 +36,7 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
         setOptions({ ...optionsState, onlyTiles: _onlyTiles, onlyNumbers: _onlyNumbers, clear: _clear });
     };
 
+
     return (
         <div class="optionsPanel">
             <div class="Title">Catan map generator</div>
@@ -43,12 +45,14 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
                     text="Random Generate"
                     color="#0015FF"
                     onClick={() => {
+                        let _nightMode = optionsState.nightMode;
                         setOptions({
                             goodNumbersCanTouch: false,
                             badNumbersCanTouch: false,
                             sameNumbersCanTouch: false,
                             sameResourcesCanTouch: false,
                             randomGenerate: true,
+                            nightMode: _nightMode,
                             onlyTiles: false,
                             onlyNumbers: false,
                             clear: false,
@@ -112,9 +116,19 @@ export function OptionsPanel({ options, setOptions }: Readonly<OptionPanelProps>
                 </div>
                 <RoundedColoredButtonWithText text="Smart generate" color="#FF0000" onClick={handleSmartGenerate} callback={() => { }} />
                 <RoundedColoredButtonWithText text="Regenerate numbers" color="#0015FF" onClick={() => { handleModularGenerateAndClear(false, true, false) }} callback={() => { }} />
-                {/* does this even make sense?  */}
                 <RoundedColoredButtonWithText text="Regenerate tiles" color="#0015FF" onClick={() => { handleModularGenerateAndClear(true, false, false) }} callback={() => { }} />
-                <RoundedColoredButtonWithText text="Clear" color="#FF0000" onClick={() => { handleModularGenerateAndClear(false, false, true) }} callback={() => { }} />
+                                <div class="darkModeSwitch">
+                    <label class="switch">
+                        <input
+                            type="checkbox"
+                            name="nightMode"
+                            checked={optionsState.nightMode}
+                            onChange={handleChange}
+                        />
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="darkModeLabel">Dark Mode</span>
+                </div>
             </div>
         </div>
     );
