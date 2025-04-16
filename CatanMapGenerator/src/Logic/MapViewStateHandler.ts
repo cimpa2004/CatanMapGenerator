@@ -3,7 +3,7 @@ import { MapGenerator } from "./GenerateMap";
 
 export class MapViewStateHandler {
     private nightMode: boolean = false;
-    private mapGenerator: MapGenerator = MapGenerator.getInstance();
+    private readonly mapGenerator: MapGenerator = MapGenerator.getInstance();
     private mapTiles: any[] = this.mapGenerator.generateMap(false, false, false, false, false, false, false, false);
 
     public getNightMode(): boolean {

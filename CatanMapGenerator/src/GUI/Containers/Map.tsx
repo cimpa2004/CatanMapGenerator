@@ -4,10 +4,10 @@ import { MountainHex } from "../Hexagons/MountainHex";
 import { FieldHex } from "../Hexagons/FieldHex";
 import { HillHex } from "../Hexagons/HillHex";
 import { PastureHex } from "../Hexagons/Pasture";
-import { MapGenerator } from "../../Logic/GenerateMap";
 import "./Map.less";
 import React, { useState,useEffect } from "preact/compat";
 import { MapTile } from "../../Logic/Tiles/MapTile";
+import Border from "../../assets/normalBackground.png"
 
 type MapProps = {
     mapTiles: MapTile[]; 
@@ -53,5 +53,12 @@ export function CatanMap({mapTiles, nightMode}: Readonly<MapProps>) {
         );
     });
 
-    return <div className="Container"><div className="hex-grid">{hexagons}</div></div>;
+    return (
+        <div className="Container">
+            <div className="hex-grid">
+                {hexagons}
+                <img src={Border} alt="" className="border" />
+            </div>
+        </div>
+    );
 }
