@@ -7,7 +7,7 @@ import { PastureHex } from "../Hexagons/Pasture";
 import "./Map.less";
 import React, { useState,useEffect } from "preact/compat";
 import { MapTile } from "../../Logic/Tiles/MapTile";
-import Border from "../../assets/normalBackground.png"
+import Border from "../../assets/normalBackgroundSmall.png";
 
 type MapProps = {
     mapTiles: MapTile[]; 
