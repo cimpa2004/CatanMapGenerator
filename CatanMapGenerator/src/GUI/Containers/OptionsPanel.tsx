@@ -61,7 +61,7 @@ export function OptionsPanel({ options, setOptions,nightMode,setNightMode }: Rea
                     callback={() => { }}
                 />
                 <div class="extraInfoText">
-                    *Will ignore all options for custom map generation, please use Smart Generate*
+                    *Will ignore all options for custom map generation
                 </div>
                 <div class="options">
                     <table>
