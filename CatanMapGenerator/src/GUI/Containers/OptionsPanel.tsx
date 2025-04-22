@@ -126,7 +126,7 @@ export function OptionsPanel({ options, setOptions,nightMode,setNightMode }: Rea
                         />
                         <span class="slider round"></span>
                     </label>
-                    <span class="darkModeLabel">Tile Switch</span>
+                    <span class="darkModeLabel">Night Mode</span>
                 </div>
             </div>
         </div>

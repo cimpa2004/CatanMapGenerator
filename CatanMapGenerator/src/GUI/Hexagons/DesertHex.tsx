@@ -1,5 +1,5 @@
 import desertImage from "../../assets/newTiles/desert.png";
-import nightImage from "../../assets/PetraTiles/placeholders/desert.png"; //PetraTiles
+import nightImage from "../../assets/PetraTiles/desert.png";
 import { HexProps } from "./HexProps";
 
 export function DesertHex({ value, altText,nightMode }: Readonly<HexProps>) {

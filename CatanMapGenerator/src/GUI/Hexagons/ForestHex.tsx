@@ -1,5 +1,5 @@
 import forestImage from "../../assets/newTiles/wood.png";
-import nightImage from "../../assets/PetraTiles/placeholders/wood.png"; //PetraTiles
+import nightImage from "../../assets/PetraTiles/forest.png"; //PetraTiles
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 
