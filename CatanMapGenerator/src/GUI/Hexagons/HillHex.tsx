@@ -1,5 +1,5 @@
 import hillImage from "../../assets/newTiles/brick.png";
-import nightImage from "../../assets/PetraTiles/placeholders/brick.png"; //PetraTiles
+import nightImage from "../../assets/PetraTiles/brick.png"; 
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 

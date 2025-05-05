@@ -1,5 +1,5 @@
 import fieldImage from "../../assets/newTiles/sheep.png";
-import nightImage from "../../assets/PetraTiles/placeholders/sheep.png"; //PetraTiles
+import nightImage from "../../assets/PetraTiles/sheep.png"; //PetraTiles
 import { getHexNumberImage } from "./GetHexNumberImage";
 import { HexProps } from "./HexProps";
 
