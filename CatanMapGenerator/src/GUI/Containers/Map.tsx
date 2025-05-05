@@ -8,6 +8,7 @@ import "./Map.less";
 import React, { useState,useEffect } from "preact/compat";
 import { MapTile } from "../../Logic/Tiles/MapTile";
 import Border from "../../assets/normalBackgroundSmall.png";
+import darkBorder from "../../assets/normalBackgroundSmalldarkedges.png";
 
 type MapProps = {
     mapTiles: MapTile[]; 
@@ -52,12 +53,16 @@ export function CatanMap({mapTiles, nightMode}: Readonly<MapProps>) {
             </div>
         );
     });
+    let finalBorder = Border;
+    if (nightMode) {
+        finalBorder = darkBorder;
+    }
 
     return (
         <div className="Container">
             <div className="hex-grid">
                 {hexagons}
-                <img src={Border} alt="" className="border" />
+                <img src={finalBorder} alt="" className="border" />
             </div>
         </div>
     );
