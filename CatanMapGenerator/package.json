@@ -5,7 +5,8 @@
 		"start": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"test": "jest"
+		"test": "jest",
+        "test:coverage": "jest --coverage"
 	},
 	"dependencies": {
 		"preact": "^10.22.1"

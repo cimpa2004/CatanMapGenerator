@@ -48,7 +48,7 @@ export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: strin
         mapTiles[index].setType("INVALID");
         remainingFieldNumber.set(hexType, remainingFieldNumber.get(hexType) + 1);
     }
-
+    //console.log("Backtracking at index:", index, "remainingFieldNumber:", remainingFieldNumber);
     return false; // No valid placement found, need to backtrack
 }
 
