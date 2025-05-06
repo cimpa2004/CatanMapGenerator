@@ -41,6 +41,10 @@ export function App() {
     }, [nightMode]);
 
     useEffect(() => {
+        document.body.classList.toggle('night-mode', nightMode);
+    }, [nightMode]);
+
+    useEffect(() => {
         mapViewStateHandler.generateMap(options);
         setMapTiles([...mapViewStateHandler.getMapTiles()]); 
     }, [options]);

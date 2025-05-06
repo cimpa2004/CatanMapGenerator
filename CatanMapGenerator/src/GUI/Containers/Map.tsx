@@ -53,9 +53,15 @@ export function CatanMap({mapTiles, nightMode}: Readonly<MapProps>) {
             </div>
         );
     });
-    let finalBorder = Border;
-    if (nightMode) {
-        finalBorder = darkBorder;
+
+    //change this back to add darkBorder(no border when nightMode is on)
+    //let finalBorder = Border;
+    //if (!nightMode) {
+    //    finalBorder = darkBorder;
+    //}
+    let finalBorder;
+    if (!nightMode) {
+        finalBorder = Border;
     }
 
     return (
