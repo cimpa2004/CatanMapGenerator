@@ -30,13 +30,6 @@ export class MapTile {
         this.value = value;
     }
 
-    public toString(): string {
-        return this.type + " " + this.value;
-    }
-
-    public addNeighbourIndex(index: number): void {
-        this.neighboursIndexes.push(index);
-    }
     public setNeighboursIndexes(neighboursIndexes: number[]): void {
         this.neighboursIndexes = neighboursIndexes;
     }
