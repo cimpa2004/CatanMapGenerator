@@ -1,3 +1,4 @@
+
 import { MapTile } from "./Tiles/MapTile";
 
 /**
@@ -11,10 +12,15 @@ import { MapTile } from "./Tiles/MapTile";
  */
 export function generateMapWithBacktracking(mapTiles: MapTile[], hexTypes: string[], remainingFieldNumber: Map<string, number>, index: number, fixedDesert: boolean = false): boolean {
     if (index === 0) {
-        // Place the desert tile at a random index
-        const desertIndex = Math.floor(Math.random() * mapTiles.length);
-        mapTiles[desertIndex].setType("Desert");
-        remainingFieldNumber.set("Desert", remainingFieldNumber.get("Desert") - 1);
+        if (fixedDesert) {
+            // Place the desert tile at the first index
+            remainingFieldNumber.set("Desert", remainingFieldNumber.get("Desert") - 1);
+        } else {
+            // Place the desert tile at a random index
+            const desertIndex = Math.floor(Math.random() * mapTiles.length);
+            mapTiles[desertIndex].setType("Desert");
+            remainingFieldNumber.set("Desert", remainingFieldNumber.get("Desert") - 1);
+        }
     }
 
     if (index === mapTiles.length) {
